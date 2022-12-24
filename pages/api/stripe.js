@@ -33,8 +33,8 @@ export default async function handler(req, res) {
               quantity: item.quantity
             }
           }),
-          success_url: `http://localhost:3000/success`,
-          cancel_url: `http://localhost:3000/`,
+          success_url: `https://next-electro-shop.vercel.app/success`,
+          cancel_url: `https://next-electro-shop.vercel.app/`,
         }
   
         // Create Checkout Sessions from body params.
