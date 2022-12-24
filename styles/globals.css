@@ -643,7 +643,7 @@ a {
     margin: auto;
   }
   .btn{
-    width: 100%;
+    width: 95%;
     max-width: 400px;
     padding: 10px 12px;
     border-radius: 5px;
@@ -1026,7 +1026,6 @@ a {
   }
   .flex h5{
     font-size: 16px;
-     color: #324d67;
   }
   .flex h4{
     font-size: 16px;
@@ -1122,7 +1121,9 @@ a {
   .navbar-container .btns .auth-btns a{
     font-size: 12px;
   }
- 
+  .hero-banner-container button{
+    margin-top: 0;
+  }
   
 }
 
