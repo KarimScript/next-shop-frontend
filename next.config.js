@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: ["localhost"],
+    protocol: 'https',
+    domains: ["next-shop-backend-production.up.railway.app"],
   },
 }
 
