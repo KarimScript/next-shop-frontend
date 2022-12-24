@@ -111,7 +111,7 @@ export async function getStaticPaths() {
           slug: item.attributes.slug,
         },
       })),
-      fallback: true,
+      fallback: false,
     }
   }
 
@@ -122,7 +122,7 @@ export async function getStaticPaths() {
       props: {
         product: matchingProduct?.data[0] ,
       },
-      revalidate: 10,
+      revalidate: 3,
     }
   }
 
