@@ -56,9 +56,12 @@ a {
     align-items: center;
     padding: 30px 70px;
     padding-top: 40px;
-    position: relative;
+    position: fixed;
     height: 60px;
     width: 100vw;
+    background-color: white;
+    top: 0;
+    z-index: 1000;
   }
 
   .navbar-container .btns{
@@ -91,8 +94,13 @@ a {
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
+    border: none;
     cursor: pointer;
   }
+
+
+
+
   .marquee-text{
     font-size: 29px;
     font-weight: 600;
@@ -301,7 +309,7 @@ a {
     height: 500px;
     line-height: 0.9; 
     width: 100%;
-    margin-top: 50px;
+    margin-top: 80px;
   
   }
   .hero-banner-container .beats-solo{
@@ -513,7 +521,7 @@ a {
     top: 0;
     z-index: 100;
     /* will-change: transform; */
-    transition: all 1s ease-in-out;
+    transition: all 0.2s ease-in-out;
   
   }
   .cart-container{
@@ -657,7 +665,7 @@ a {
   display: flex;
    gap: 40px;
    margin: 40px;
-   margin-top: 60px;
+   margin-top: 80px;
    color: #0a0a0a;
   
   }
@@ -812,6 +820,31 @@ a {
     color: rgb(49, 168, 49);
   
   }
+
+
+  @media (max-width:600px){
+    .quantity-desc{
+      border: 1px solid gray;
+    padding: 2px;
+    }
+    .quantity-desc span{
+      font-size: 13px;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    .quantity-desc .minus{
+      border-right: 1px solid gray;
+      color: #f02d34;
+    }
+    .quantity-desc .num{
+      border-right: 1px solid gray;
+      font-size: 15px;
+    }
+    .quantity-desc .plus{
+      color: rgb(49, 168, 49);
+    
+    }
+  }
   
   .maylike-products-wrapper{
     margin-top: 120px;
@@ -886,7 +919,7 @@ a {
     margin-top: 10px;
   }
   
-  @media (min-width:600px) and (max-width:800px) {
+  @media (min-width:100px) and (max-width:800px) {
     .hero-banner-container{
       height: 560px;
     }
@@ -951,7 +984,7 @@ a {
       }
    
     .cart-container{
-      width: 415px;
+      width:90vw;
     padding: 4px;
     }
     .cart-heading{
@@ -975,7 +1008,8 @@ a {
       width: 150px;
     }
     .product-detail-container{
-      margin: 20px;
+      margin: 18px;
+      margin-top: 80px;
     }
   
   .item-desc .flex{
@@ -1077,8 +1111,19 @@ a {
 
 @media (max-width:600px){
   .navbar-container{
-    padding: 30px;
+    padding: 15px 10px;
   }
+  .navbar-container .logo{
+    font-size: 20px;
+  }
+  .navbar-container .btns{
+    margin-right: 0;
+  }
+  .navbar-container .btns .auth-btns a{
+    font-size: 12px;
+  }
+ 
+  
 }
 
 @media (max-width:500px){
@@ -1088,10 +1133,19 @@ a {
   .product-detail-desc p{
     font-size: 14px;
   }
-  .product-detail-container{
-    margin: 22px;
-  }
+  
   .products-heading .filter h3{
     font-size: 14px;
+  }
+
+  .product-card .card-info .product-name{
+    font-size: 15px;
+  }
+
+  .product-card .card-info .product-price{
+    font-size: 17px;
+  }
+  .products-heading .filter{
+    gap: 5px;
   }
 }
