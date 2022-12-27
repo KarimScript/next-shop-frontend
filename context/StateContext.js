@@ -18,18 +18,21 @@ export const StateContext = ({ children }) => {
   const [qty, setQty] = useState(1);
   
   let foundProduct;
-  let index;
+  let items = []
 
 
   useEffect(() => {
-    
-    if(hasCookie('cart')){
-      setCartItems(JSON.parse(getCookie('cart')).cartItems);
-      setTotalPrice(JSON.parse(getCookie('cart')).total);
-      setTotalQuantities(JSON.parse(getCookie('cart')).quantities);
-    }
-    
-    console.log('initial cart info :',getCookie('cart') )
+ 
+    document.addEventListener('snipcart.ready', ()=>{
+      setCartItems(
+         Snipcart.store.subscribe(() => {
+          return Snipcart.store.getState().cart.items.items;
+          
+         })
+      )
+      console.log('cartItems state:',cartItems)
+      
+    })
   
   }, [])
   
@@ -46,7 +49,8 @@ export const StateContext = ({ children }) => {
 
 
   const checkProductInCart = (product) =>{
-     return cartItems?.find((item) => item.id === product.id);
+
+   return cartItems?.find((item) => item.id === product.id);  
     
   }
 
@@ -77,7 +81,7 @@ export const StateContext = ({ children }) => {
       total:totalPrice,
       quantities:totalQuantities
     }),{maxAge:60*60*24*7});
-    console.log('Added from onAdd():',getCookie('cart'))
+    
     toast.success(`${qty} ${product.attributes.name} added to the cart.`);
   } 
 
@@ -93,7 +97,7 @@ export const StateContext = ({ children }) => {
       total:totalPrice,
       quantities:totalQuantities
     }),{maxAge:60*60*24*7});
-    console.log('updated from onRemove():',getCookie('cart'))
+    
   }
 
   const toggleCartItemQuanitity = (id, value) => {
@@ -117,7 +121,7 @@ export const StateContext = ({ children }) => {
       total:totalPrice,
       quantities:totalQuantities
     }),{maxAge:60*60*24*7});
-    console.log('updated from toggleCartItemQuanitity():',getCookie('cart'))
+    
   }
 
   const incQty = () => {
@@ -159,3 +163,11 @@ export const StateContext = ({ children }) => {
 }
 
 export const useStateContext = () => useContext(Context);
+
+
+
+    // if(hasCookie('cart')){
+    //   setCartItems(JSON.parse(getCookie('cart')).cartItems);
+    //   setTotalPrice(JSON.parse(getCookie('cart')).total);
+    //   setTotalQuantities(JSON.parse(getCookie('cart')).quantities);
+    // }

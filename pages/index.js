@@ -10,7 +10,18 @@ import { useStateContext } from '../context/StateContext'
 // import { getCookie, deleteCookie ,hasCookie} from 'cookies-next'
 
 export default function Home({banner,products}) {
-  // deleteCookie('cart');
+  console.log('strapi product:',products)
+
+  useEffect(() => {
+    document.addEventListener('snipcart.ready',()=>{
+      Snipcart.store.subscribe(() => {
+        const Items = Snipcart.store.getState().cart.items.items;
+        console.log('snipcart items:',Items)
+      });
+    })
+  
+  }, [])
+
   const { setCartItems } = useStateContext();
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(0);
@@ -24,17 +35,6 @@ export default function Home({banner,products}) {
     }
   })
 
-  // useEffect(() => {
-  //   if(hasCookie('cart')){
-  //    const items = JSON.parse(getCookie('cart')) ;
-  //    if(items){
-  //      setCartItems(items) ;
-  //      console.log('pasred from cookie :' , items)
-  //    }
-  //   }
-     
-  //  }, [])
-  
 
   useEffect(() => {
     setFilteredProducts(products?.filter((item)=>
@@ -43,6 +43,9 @@ export default function Home({banner,products}) {
   
   }, [activeCategory])
   
+
+
+
 
   return (
     <>
@@ -75,7 +78,7 @@ export default function Home({banner,products}) {
          </div>
         </div>
         <div className="products-container">
-         {filteredProducts?.map((product) => <ProductCard key={product.id} product={product} />)}
+         {filteredProducts?.map((product) => <ProductCard key={product.id} product={product}  />)}
         </div>
       </main>
      

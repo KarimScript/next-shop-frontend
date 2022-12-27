@@ -28,6 +28,17 @@ a {
   padding: 10px 20px;
 }
 
+.snipcart-layout{
+  z-index: 1000 !important;
+  
+}
+
+.snipcart-button-primary{
+  background-color: #22b46b;
+}
+.snipcart-button-primary:hover{
+  background-color: #129654;
+}
 .mainButton{
   border-radius: 5px;
   padding: 15px 30px;
@@ -61,7 +72,7 @@ a {
     width: 100vw;
     background-color: white;
     top: 0;
-    z-index: 1000;
+    z-index: 10;
   }
 
   .navbar-container .btns{

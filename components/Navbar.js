@@ -24,11 +24,13 @@ const Navbar = () => {
       <h1 className="logo">
         <Link href="/">ELECTRO</Link>
       </h1>
-        
+      {/* onClick={() => setShowCart(true)} */}
      <div className='btns'>
-      <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
+      <button type="button" className="cart-icon snipcart-checkout" >
         <AiOutlineShopping />
-        <span className="cart-item-qty">{totalQuantities}</span>
+        <span class="snipcart-items-count cart-item-qty"></span>
+
+        {/* <span className="cart-item-qty">{totalQuantities}</span> */}
       </button>
 
       <div className='auth-btns'>
