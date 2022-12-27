@@ -30,8 +30,10 @@ console.log(product)
           id: product.id,
           name: product.attributes.name,
           price: getPriceAfterSale(product),
+          image:getStrapiURL(product.attributes.mainImage.data.attributes.url),
           url: `/product/${product.attributes.slug}`,
           quantity: qty,
+
       });
       toast.success(`${qty} ${product.attributes.name} added to the cart.`);
 

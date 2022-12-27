@@ -31,6 +31,7 @@ const ProductCard = ({product}) => {
           id: product.id,
           name: product.attributes.name,
           price: getPriceAfterSale(product),
+          image:getStrapiURL(product.attributes.mainImage.data.attributes.url),
           url: `/product/${product.attributes.slug}`,
           quantity: 1,
       });
