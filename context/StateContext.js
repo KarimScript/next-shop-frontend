@@ -30,7 +30,7 @@ export const StateContext = ({ children }) => {
           
          })
       )
-      console.log('cartItems state:',cartItems)
+      // console.log('cartItems state:',cartItems)
       
     })
   

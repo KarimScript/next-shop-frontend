@@ -16,7 +16,7 @@ export default function Home({banner,products}) {
     document.addEventListener('snipcart.ready',()=>{
       Snipcart.store.subscribe(() => {
         const Items = Snipcart.store.getState().cart.items.items;
-        console.log('snipcart items:',Items)
+        // console.log('snipcart items:',Items)
       });
     })
   
