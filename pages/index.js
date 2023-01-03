@@ -10,7 +10,7 @@ import { useStateContext } from '../context/StateContext'
 // import { getCookie, deleteCookie ,hasCookie} from 'cookies-next'
 
 export default function Home({banner,products}) {
-  console.log('strapi product:',products)
+  // console.log('strapi product:',products)
 
   useEffect(() => {
     document.addEventListener('snipcart.ready',()=>{

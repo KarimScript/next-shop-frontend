@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import ProductCard from '../../components/ProductCard';
 
 const ProductDetails = ({product}) => {
-console.log(product)
+// console.log(product)
 
     const [index, setIndex] = useState(0);
     const [relatedProducts, setRelatedProducts] = useState([]);
@@ -19,7 +19,7 @@ console.log(product)
       const getRelated = async ()=>{
         const related = await fetchAPI(`/products?filters[$and][0][category][id][$eq]=${product.attributes.category.data.id}&filters[$and][1][id][$ne]=${product.id}&pagination[limit]=3&populate=*`)
         setRelatedProducts(related?.data)
-        console.log('Related:',related.data)
+        // console.log('Related:',related.data)
       }
       
       getRelated();
