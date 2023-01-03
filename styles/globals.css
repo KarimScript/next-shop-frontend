@@ -833,6 +833,44 @@ a {
   }
 
 
+
+
+
+  /* Related Products */
+
+.related-container{
+  margin-top: 80px;
+  padding-left: 30px;
+}
+.related-container h2{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.related-products{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+
+@media (max-width:780px){
+  .related-container{
+    padding: 0 20px;
+  }
+  .related-container h2{
+    font-size: 30px;
+  }
+  .related-products{
+    justify-content: center;
+  }
+  .related-products .product-card{
+    width: 90vw;
+  }
+}
+
+
   @media (max-width:600px){
     .quantity-desc{
       border: 1px solid gray;

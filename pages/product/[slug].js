@@ -5,16 +5,28 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 import { useStateContext } from '../../context/StateContext';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
-// import { getCookie , hasCookie } from 'cookies-next';
+import ProductCard from '../../components/ProductCard';
 
-const ProductDetails = ({product , related}) => {
+const ProductDetails = ({product}) => {
 console.log(product)
-// console.log('related : ' ,related)
 
     const [index, setIndex] = useState(0);
+    const [relatedProducts, setRelatedProducts] = useState([]);
     const { decQty, incQty, qty, onAdd, setShowCart ,setCartItems , getPriceAfterSale} = useStateContext();
     const router = useRouter();
     
+    useEffect(() => {
+      const getRelated = async ()=>{
+        const related = await fetchAPI(`/products?filters[$and][0][category][id][$eq]=${product.attributes.category.data.id}&filters[$and][1][id][$ne]=${product.id}&pagination[limit]=3&populate=*`)
+        setRelatedProducts(related?.data)
+        console.log('Related:',related.data)
+      }
+      
+      getRelated();
+
+    }, [])
+    
+
 
     const handleBuyNow = () => {
         AddToCart(product, qty);
@@ -112,19 +124,21 @@ console.log(product)
           </div>
         </div>
 
-        {/* 
-         onClick={() => onAdd(product, qty)}
-        <div className="maylike-products-wrapper">
+        
+       
+        
+    </div>
+
+       <div className="related-container">
           <h2>You may also like</h2>
-          <div className="marquee">
-            <div className="maylike-products-container track">
-              {products.map((item) => (
-                <Product key={item._id} product={item} />
+         
+            <div className="related-products">
+              {relatedProducts.map((item) => (
+                <ProductCard key={item.id} product={item} />
               ))}
             </div>
-          </div>
-      </div> */}
-    </div>
+          
+      </div>
 </div>
   )
 }
@@ -141,7 +155,7 @@ export async function getStaticPaths() {
       paths: products?.data.map((item) => ({
         params: {
           slug: item.attributes.slug,
-          category:item.attributes.category.data.id ,
+         
         },
       })),
       fallback: false,
@@ -150,13 +164,16 @@ export async function getStaticPaths() {
 
   export async function getStaticProps({ params }) {
     const matchingProduct = await fetchAPI(`/products?filters\[Slug\][$eq]=${params.slug}&populate=*`)
-    const relatedProduct = await fetchAPI(`/products?filters\[category\][id][$eq]=${params.category}&populate=*`)
+    
+    
     return {
       props: {
         product: matchingProduct?.data[0] ,
-        related : relatedProduct?.data
+       
       },
       revalidate: 3,
     }
   }
 
+
+// .replace(/["]+/g, '')   remove quotation"" from string
