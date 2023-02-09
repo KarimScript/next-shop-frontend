@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     loader: "default",
     protocol: 'https',
-    domains: ["next-shop-backend-production.up.railway.app"],
+    domains: ["workable-marble-constrictor.glitch.me"],
   },
 }
 
